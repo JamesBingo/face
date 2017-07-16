@@ -1,0 +1,22 @@
+{
+	MIL-STD-1553: {
+		subaddress: <subaddress>,
+		word: [
+			{
+				<word object>
+			}
+		]
+	},
+
+	ARINC-429: [
+		{
+			name: <word name>,
+			number: <number>,
+			lsb: <resolution>,
+			transmit: True | False
+		},
+		{
+			...
+		}
+	]
+}

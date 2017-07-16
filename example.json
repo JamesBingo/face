@@ -1,0 +1,25 @@
+{
+	"company": "Oli Ltd",
+	"product": "airdata", 
+	"MIL-STD-1553": [{
+		"subaddress": 1,
+		"name": "Main Message",
+		"words": [
+			{
+				"number": 1,
+				"name": "Static Pressure",
+				"lsb": 0.1,
+				"units": "mbar"
+
+			},
+			{
+				"number":2,
+				"name": "Total Presusre",
+				"lsb": 0.1,
+				"units": "mbar"
+			}
+		],
+		"wordcount": 2,
+		"transmit": true
+	}]
+}
