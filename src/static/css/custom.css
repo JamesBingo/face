@@ -93,3 +93,8 @@ th {
     font-weight: 300;
     text-transform: uppercase;
 }
+
+.hover-row: hover {
+    cursor: pointer;
+    background-color: red;
+}
