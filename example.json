@@ -10,6 +10,8 @@
 				"number": 1,
 				"name": "Static Pressure",
 				"lsb": 0.1,
+				"length": 16,
+				"padding": 0,
 				"units": "mbar"
 
 			},
@@ -17,8 +19,27 @@
 				"number":2,
 				"name": "Total Presusre",
 				"lsb": 0.1,
+				"length": 16,
+				"padding": 0,
 				"units": "mbar"
+			},
+			{
+				"number":4,
+				"discrete": true,
+				"name": "Status Word",
+				"bits": [{
+							"bit":1,
+							"name":"Static Pressure Valid", 
+							"description": "VALID = 1, INVALID = 0"
+						},
+						{
+							"bit":2,
+							"name":"Total Pressure Valid", 
+							"description": "VALID = 1, INVALID = 0"
+						}
+				]
 			}
+
 		],
 		"wordcount": 2,
 		"transmit": true
@@ -30,14 +51,18 @@
 				"number": 1,
 				"name": "Static Pressure",
 				"lsb": 0.1,
-				"units": "mbar"
+				"length": 16,
+				"units": "mbar",
+				"padding": 0
 
 			},
 			{
 				"number":2,
 				"name": "Total Presusre",
 				"lsb": 0.1,
-				"units": "mbar"
+				"length": 16,
+				"units": "mbar",
+				"padding": 0
 			}
 		],
 		"wordcount": 8,
@@ -50,14 +75,18 @@
 				"number": 1,
 				"name": "Static Pressure",
 				"lsb": 0.1,
-				"units": "mbar"
+				"length": 16,
+				"units": "mbar",
+				"padding": 0
 
 			},
 			{
 				"number":2,
 				"name": "Total Presusre",
 				"lsb": 0.1,
-				"units": "mbar"
+				"length": 16,
+				"units": "mbar",
+				"padding": 0
 			}
 		],
 		"wordcount": 4,

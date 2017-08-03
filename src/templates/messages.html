@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <title>Interface - {{company}}</title>
+    <title>{{company}}</title>
 
     <!-- Styles -->
     <link href="static/css/nextdocs.css" rel="stylesheet">
@@ -16,28 +16,9 @@
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
-
 </head>
 
-<body>
-
-
-    <!-- Word Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="word-title"></h4>
-          </div>
-          <div class="modal-body"  id="modal-body">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <body>
 
     <main class="container">
       <div class="row">
@@ -55,27 +36,36 @@
         <!-- END Sidebar -->
 
 
-        <!-- Words content -->
+        <!-- Main content -->
         <article class="col-md-9 col-sm-9 main-content" role="main">
 
           <header>
-            <h1>{{name}}</h1>
+            <h1>MIL-STD-1553</h1>
+            <p>Something...</p>
+            <ol class="toc">
+              <li><a href="#intro">TOC 1</a></li>
+              <li><a href="#interfaces">TOC 2</a></li>
+            </ol>
           </header>
 
           <section>
-            <h2 id="messages">{{name}}</h2>
-            <table id="messages" class="table table-hover">
+            <h2 id="interfaces">Interface Description</h2>
+            <table id=messages class="table table-hover">
               <thead>
                 <tr>
-                  <th>Word No.</th>
-                  <th>Word Name</th>
+                  <th>Subaddress</th>
+                  <th>Name</th>
+                  <th>Word Count</th>
+                  <th>T/R</th>
                 </tr>
               </thead>
               <tbody>              
-                {% for word in words %}
-                  <tr id="{{word.number}}" class="hover-row word">
-                    <th scope="row">{{word.number}}</th>
-                    <td>{{word.name}}</td>
+                {% for message in messages %}
+                  <tr onclick="a={{message.subaddress}};window.location=a.toString() + '.html';" class="hover-row">
+                    <th scope="row">{{message.subaddress}}</th>
+                    <td>{{message.name}}</td>
+                    <td>{{message.wordcount}}</td>
+                    <td>{{message.transmit}}</td>
                   </tr>
                 {% endfor %}
               </tbody>
@@ -85,6 +75,7 @@
         <!-- END Main content -->
       </div>
     </main>
+
 
     <!-- Footer -->
     <footer class="site-footer">
@@ -106,18 +97,11 @@
       </div>
     </footer>
     <!-- END Footer -->
-    
-    <!-- Vendor Scripts -->
-    <script src="static/js/vendor/ejs.min.js"></script>
 
     <!-- Scripts -->
     <script src="static/js/nextdocs.js"></script>
     <script src="static/js/custom.js"></script>
-    <script> subaddress = "{{sa}}" </script>
 
-
-
-</body>
-
+  </body>
 
 </html>

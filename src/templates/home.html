@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <title>Interface - {{company}}</title>
+    <title>{{company}}</title>
 
     <!-- Styles -->
     <link href="static/css/nextdocs.css" rel="stylesheet">
@@ -17,7 +17,6 @@
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
 
-    <link rel="icon" href="img/favicon.ico">
   </head>
 
   <body>
@@ -69,27 +68,9 @@
           <section>
             <h2 id="interfaces">Interfaces</h2>
             <p>{{product}} implements the following interfaces.</p>
-            <h3>MIL-STD-1553</h3>
-            <table id=messages class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Subaddress</th>
-                  <th>Name</th>
-                  <th>Word Count</th>
-                  <th>T/R</th>
-                </tr>
-              </thead>
-              <tbody>              
-                {% for message in messages %}
-                  <tr onclick="a={{message.subaddress}};window.location=a.toString() + '.html';" class="hover-row">
-                    <th scope="row">{{message.subaddress}}</th>
-                    <td>{{message.name}}</td>
-                    <td>{{message.wordcount}}</td>
-                    <td>{{message.transmit}}</td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+            {% for interface in interfaces %}
+              <li><a href="mil.html">{{interface}}</a></li>
+            {% endfor %}
           </section>
         </article>
         <!-- END Main content -->

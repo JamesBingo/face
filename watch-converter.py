@@ -2,12 +2,13 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import subprocess
+import datetime
 
 
 class MyHandler(FileSystemEventHandler):
     def on_modified(self, event):
         subprocess.call(['python','converters.py'])
-        print "Running Conversion"
+        print "Files created in dist at: " + datetime.datetime.now().isoformat()
 
 
 if __name__ == "__main__":

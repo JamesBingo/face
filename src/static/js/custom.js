@@ -1,31 +1,36 @@
-$(function() {
+modal = `<section>
+        <h2><%= word.name %></h2>
 
-  $('[data-skin]').on('click', function(e) {
-    e.preventDefault();
-    var skin = $(this).data('skin');
-    $('#style-skin').attr('href', 'assets/css/skin-'+ skin +'.css');
-  });
+          <% if (word.discrete) { %>
+            <table id="messages" class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Bit No.</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>              
+                <% for(var i = 0; i < word.bits.length; ++i) {%>
+                  <tr id="<%= word.bits[i].bit %>" class="hover-row word">
+                    <th scope="row"><%= word.bits[i].bit %></th>
+                    <td><%= word.bits[i].name %></td>
+                    <td><%= word.bits[i].description %></td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          <% } else { %>
+            <p><strong>Number: </strong><%= word.number %></p>
+            <p><strong>Lsb: </strong><%= word.lsb %></p>
+            <p><strong>Length: </strong><%= word.length %></p>
+            <p><strong>Padding: </strong><%= word.padding %></p>
+            <p><strong>Units: </strong><%= word.units %></p>
+          <% } %>
+        </section>`
 
-  // Sidebar-boxed: Try it section
-  $('#sb-left-side').on('click', function() {
-    $('.sidebar-boxed').removeClass('sidebar-right');
-  });
 
-  $('#sb-right-side').on('click', function() {
-    $('.sidebar-boxed').addClass('sidebar-right');
-  });
-
-  $('#sb-skin-light').on('click', function() {
-    $('.sidebar-boxed').removeClass('sidebar-dark');
-  });
-
-  $('#sb-skin-dark').on('click', function() {
-    $('.sidebar-boxed').addClass('sidebar-dark');
-  });
-
-});
-
-$(".hover-row").hover( 
+$(".hover-row").hover(
   function() {
     document.body.style.cursor = "pointer";
   }, function() {
@@ -54,11 +59,7 @@ $('.word').click(
 
         // Set the modal data
         $('#word-title').html(message.name)
-        $('#word-name').html(word.name)
-        $('#word-lsb').html('<strong>lsb: </strong>'+word.lsb)
-        $('#word-units').html('<strong>units: </strong>'+word.units)
-        $('#word-number').html('<strong>number: </strong>'+word.number)
-
+        $('#modal-body').html(ejs.render(modal,{word:word}))
 
         // Display the modal
         $('#myModal').modal()
