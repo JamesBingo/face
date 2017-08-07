@@ -2,6 +2,8 @@
 
 The goal of **Face** is to help you rapidly develop your next interface documentation, code and test tools.
 
+It currently takes a config file and outputs a static web page. The plan is to add code and test tools and different format of documents.
+
 # Install
 
 Install the required dependencies:
