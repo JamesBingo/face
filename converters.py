@@ -45,8 +45,10 @@ class MilConverter(WebDocumentConverter):
 
 		# Create messages page (shows all messages)
 		template = self.env.get_template('messages.html')
-		result = template.render(company=self.config['company'], messages=self.config['MIL-STD-1553'])
-		print directory
+		result = template.render(company=self.config['company'], messages=self.config['MIL-STD-1553']['messages'],modeCodes=self.config['MIL-STD-1553']['mode codes'])
+		
+
+
 		buildfile = os.path.join(directory,'mil.html')
 		f = open(buildfile, 'wb')
 		f.write(result)
@@ -55,7 +57,7 @@ class MilConverter(WebDocumentConverter):
 
 		# Create message pages (shows each word for a message)
 		template = self.env.get_template('message.html')
-		messages = self.config['MIL-STD-1553']
+		messages = self.config['MIL-STD-1553']['messages']
 		for message in messages:
 			result = template.render(company=self.config['company'], words=message['words'],name=message['name'], sa=message['subaddress'],wordsjson=json.dumps(message['words']))
 			fileName = str(message['subaddress']) + '.html' 

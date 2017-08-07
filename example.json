@@ -2,94 +2,107 @@
 	"company": "Oli Ltd",
 	"product": "airdata",
 	"description": "airdata calculates airdata der!", 
-	"MIL-STD-1553": [{
-		"subaddress": 1,
-		"name": "Main Message",
-		"words": [
-			{
-				"number": 1,
-				"name": "Static Pressure",
-				"lsb": 0.1,
-				"length": 16,
-				"padding": 0,
-				"units": "mbar"
+	"MIL-STD-1553": {
+		"messages":[{
+			"subaddress": 1,
+			"name": "Main Message",
+			"words": [
+				{
+					"number": 1,
+					"name": "Static Pressure",
+					"lsb": 0.1,
+					"length": 16,
+					"padding": 0,
+					"units": "mbar"
 
-			},
-			{
-				"number":2,
-				"name": "Total Presusre",
-				"lsb": 0.1,
-				"length": 16,
-				"padding": 0,
-				"units": "mbar"
-			},
-			{
-				"number":4,
-				"discrete": true,
-				"name": "Status Word",
-				"bits": [{
-							"bit":1,
-							"name":"Static Pressure Valid", 
-							"description": "VALID = 1, INVALID = 0"
-						},
-						{
-							"bit":2,
-							"name":"Total Pressure Valid", 
-							"description": "VALID = 1, INVALID = 0"
-						}
-				]
-			}
+				},
+				{
+					"number":2,
+					"name": "Total Presusre",
+					"lsb": 0.1,
+					"length": 16,
+					"padding": 0,
+					"units": "mbar"
+				},
+				{
+					"number":4,
+					"discrete": true,
+					"name": "Status Word",
+					"bits": [{
+								"bit":1,
+								"name":"Static Pressure Valid", 
+								"description": "VALID = 1, INVALID = 0"
+							},
+							{
+								"bit":2,
+								"name":"Total Pressure Valid", 
+								"description": "VALID = 1, INVALID = 0"
+							}
+					]
+				}
 
-		],
-		"wordcount": 2,
-		"transmit": true
-	},{
-		"subaddress": 2,
-		"name": "Staus Message",
-		"words": [
-			{
-				"number": 1,
-				"name": "Static Pressure",
-				"lsb": 0.1,
-				"length": 16,
-				"units": "mbar",
-				"padding": 0
+			],
+			"wordcount": 2,
+			"transmit": true
+		},{
+			"subaddress": 2,
+			"name": "Staus Message",
+			"words": [
+				{
+					"number": 1,
+					"name": "Static Pressure",
+					"lsb": 0.1,
+					"length": 16,
+					"units": "mbar",
+					"padding": 0
 
-			},
-			{
-				"number":2,
-				"name": "Total Presusre",
-				"lsb": 0.1,
-				"length": 16,
-				"units": "mbar",
-				"padding": 0
-			}
-		],
-		"wordcount": 8,
-		"transmit": true
-	},{
-		"subaddress": 3,
-		"name": "Other Message",
-		"words": [
-			{
-				"number": 1,
-				"name": "Static Pressure",
-				"lsb": 0.1,
-				"length": 16,
-				"units": "mbar",
-				"padding": 0
+				},
+				{
+					"number":2,
+					"name": "Total Presusre",
+					"lsb": 0.1,
+					"length": 16,
+					"units": "mbar",
+					"padding": 0
+				}
+			],
+			"wordcount": 8,
+			"transmit": true
+		},{
+			"subaddress": 3,
+			"name": "Other Message",
+			"words": [
+				{
+					"number": 1,
+					"name": "Static Pressure",
+					"lsb": 0.1,
+					"length": 16,
+					"units": "mbar",
+					"padding": 0
 
-			},
-			{
-				"number":2,
-				"name": "Total Presusre",
-				"lsb": 0.1,
-				"length": 16,
-				"units": "mbar",
-				"padding": 0
-			}
-		],
-		"wordcount": 4,
-		"transmit": true
-	}]
+				},
+				{
+					"number":2,
+					"name": "Total Presusre",
+					"lsb": 0.1,
+					"length": 16,
+					"units": "mbar",
+					"padding": 0
+				}
+			],
+			"wordcount": 4,
+			"transmit": true
+		}],
+		"mode codes": {
+			"implemented": [
+				"Transmit status word", 
+				"Syncronise with Data Word",
+				"Inibit Terminal Flag bit"
+			],
+			"notimplemented": [
+				"Reset Remote Terminal",
+				"Transmitter Bus Shutdown"
+			]
+		} 
+	}
 }

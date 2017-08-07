@@ -43,13 +43,29 @@
             <h1>MIL-STD-1553</h1>
             <p>Something...</p>
             <ol class="toc">
-              <li><a href="#intro">TOC 1</a></li>
-              <li><a href="#interfaces">TOC 2</a></li>
+              <li><a href="#mode-codes">Mode Codes</a></li>
+              <li><a href="#interface">Message Definition</a></li>
             </ol>
           </header>
 
           <section>
-            <h2 id="interfaces">Interface Description</h2>
+            <h2 id="mode-codes">Mode Codes</h2>
+            <p>The following mode codes are implemented:</p>
+            <ul>
+              {% for modeCode in modeCodes.implemented %}
+              <li>{{modeCode}}</li>
+              {% endfor %}
+            </ul>
+            <p>The following mode codes are not implemented:</p>
+            <ul>
+              {% for modeCode in modeCodes.notimplemented %}
+              <li>{{modeCode}}</li>
+              {% endfor %}
+            </ul>
+          </section>
+
+          <section>
+            <h2 id="interface">Interface Description</h2>
             <table id=messages class="table table-hover">
               <thead>
                 <tr>
