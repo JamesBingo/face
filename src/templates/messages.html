@@ -1,123 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-
-    <title>{{company}}</title>
-
-    <!-- Styles -->
-    <link href="static/css/nextdocs.css" rel="stylesheet">
-    <link href="static/css/custom.css" rel="stylesheet">
-
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
-</head>
-
-  <body>
-
-    <main class="container">
-      <div class="row">
-
-        <!-- Sidebar -->
-        <aside class="col-md-3 col-sm-3 sidebar">
-
-          <ul class="sidenav dropable sticky">
-            <li class="active">
-              <a href="home.html">Home</a>
-            </li>
-          </ul>
-
-        </aside>
-        <!-- END Sidebar -->
+{% extends "base.html" %}
 
 
-        <!-- Main content -->
-        <article class="col-md-9 col-sm-9 main-content" role="main">
+{% block body %}
+<main class="container">
+  <div class="row">
 
-          <header>
-            <h1>MIL-STD-1553</h1>
-            <p>Something...</p>
-            <ol class="toc">
-              <li><a href="#mode-codes">Mode Codes</a></li>
-              <li><a href="#interface">Message Definition</a></li>
-            </ol>
-          </header>
+    <!-- Sidebar -->
+    <aside class="col-md-3 col-sm-3 sidebar">
 
-          <section>
-            <h2 id="mode-codes">Mode Codes</h2>
-            <p>The following mode codes are implemented:</p>
-            <ul>
-              {% for modeCode in modeCodes.implemented %}
-              <li>{{modeCode}}</li>
-              {% endfor %}
-            </ul>
-            <p>The following mode codes are not implemented:</p>
-            <ul>
-              {% for modeCode in modeCodes.notimplemented %}
-              <li>{{modeCode}}</li>
-              {% endfor %}
-            </ul>
-          </section>
+      <ul class="sidenav dropable sticky">
+        <li class="active">
+          <a href="home.html">Home</a>
+        </li>
+      </ul>
 
-          <section>
-            <h2 id="interface">Interface Description</h2>
-            <table id=messages class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Subaddress</th>
-                  <th>Name</th>
-                  <th>Word Count</th>
-                  <th>T/R</th>
-                </tr>
-              </thead>
-              <tbody>              
-                {% for message in messages %}
-                  <tr onclick="a={{message.subaddress}};window.location=a.toString() + '.html';" class="hover-row">
-                    <th scope="row">{{message.subaddress}}</th>
-                    <td>{{message.name}}</td>
-                    <td>{{message.wordcount}}</td>
-                    <td>{{message.transmit}}</td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </section>
-        </article>
-        <!-- END Main content -->
-      </div>
-    </main>
+    </aside>
+    <!-- END Sidebar -->
 
 
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="container">
-        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+    <!-- Main content -->
+    <article class="col-md-9 col-sm-9 main-content" role="main">
 
-        <div class="row">
-          <div class="col-md-6 col-sm-6">
-            <p>Copyright &copy; 2017. All right reserved</p>
-          </div>
-          <div class="col-md-6 col-sm-6">
-            <ul class="footer-menu">
-              <li><a href="#">Changelog</a></li>
-              <li><a href="#">Credits</a></li>
-              <li><a href="#" target="_blank">Contact us</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- END Footer -->
+      <header>
+        <h1>MIL-STD-1553</h1>
+        <p>Something...</p>
+        <ol class="toc">
+          <li><a href="#mode-codes">Mode Codes</a></li>
+          <li><a href="#interface">Message Definition</a></li>
+        </ol>
+      </header>
 
-    <!-- Scripts -->
-    <script src="static/js/nextdocs.js"></script>
-    <script src="static/js/custom.js"></script>
+      <section>
+        <h2 id="mode-codes">Mode Codes</h2>
+        <p>The following mode codes are implemented:</p>
+        <ul>
+          {% for modeCode in modeCodes.implemented %}
+          <li>{{modeCode}}</li>
+          {% endfor %}
+        </ul>
+        <p>The following mode codes are not implemented:</p>
+        <ul>
+          {% for modeCode in modeCodes.notimplemented %}
+          <li>{{modeCode}}</li>
+          {% endfor %}
+        </ul>
+      </section>
 
-  </body>
-
-</html>
+      <section>
+        <h2 id="interface">Interface Description</h2>
+        <table id=messages class="table table-hover">
+          <thead>
+            <tr>
+              <th>Subaddress</th>
+              <th>Name</th>
+              <th>Word Count</th>
+              <th>T/R</th>
+            </tr>
+          </thead>
+          <tbody>              
+            {% for message in messages %}
+              <tr onclick="a={{message.subaddress}};window.location=a.toString() + '.html';" class="hover-row">
+                <th scope="row">{{message.subaddress}}</th>
+                <td>{{message.name}}</td>
+                <td>{{message.wordcount}}</td>
+                <td>{{message.transmit}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </article>
+    <!-- END Main content -->
+  </div>
+</main>
+{% endblock %}

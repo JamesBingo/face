@@ -1,108 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+{% block body %}
+<main class="container">
+  <div class="row">
 
-    <title>{{company}}</title>
+    <!-- Sidebar -->
+    <aside class="col-md-3 col-sm-3 sidebar">
 
-    <!-- Styles -->
-    <link href="static/css/nextdocs.css" rel="stylesheet">
-    <link href="static/css/custom.css" rel="stylesheet">
-
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
-
-  </head>
-
-  <body>
-
-    <main class="container">
-      <div class="row">
-
-        <!-- Sidebar -->
-        <aside class="col-md-3 col-sm-3 sidebar">
-
-          <ul class="sidenav dropable sticky">
-            <li class="active">
-              <a href="#">Overview</a>
-              <ul>
-                <li><a href="#intro">Introduction</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#interfaces">Interfaces</a>
-              <ul>
-                {% for interface in interfaces %}
-                  <li><a href="#{{interface}}">{{interface}}</a></li>
-                {% endfor %}
-              </ul>
-            </li>
+      <ul class="sidenav dropable sticky">
+        <li class="active">
+          <a href="#">Overview</a>
+          <ul>
+            <li><a href="#intro">Introduction</a></li>
           </ul>
-
-        </aside>
-        <!-- END Sidebar -->
-
-
-        <!-- Main content -->
-        <article class="col-md-9 col-sm-9 main-content" role="main">
-
-          <header>
-            <h1>Interface</h1>
-            <p><strong>Interface</strong> is a html online documentation template which can help you rapidly develop your next interface documentation, code and test tools.</p>
-            <ol class="toc">
-              <li><a href="#intro">Introduction</a></li>
-              <li><a href="#interfaces">Interfaces</a></li>
-            </ol>
-          </header>
-
-          <section>
-            <h2 id="intro">Introduction</h2>
-            <p>{{description}}</p>
-          </section>
-
-          <section>
-            <h2 id="interfaces">Interfaces</h2>
-            <p>{{product}} implements the following interfaces.</p>
+        </li>
+        <li>
+          <a href="#interfaces">Interfaces</a>
+          <ul>
             {% for interface in interfaces %}
-              <li><a href="mil.html">{{interface}}</a></li>
+              <li><a href="#{{interface}}">{{interface}}</a></li>
             {% endfor %}
-          </section>
-        </article>
-        <!-- END Main content -->
-      </div>
-    </main>
+          </ul>
+        </li>
+      </ul>
+
+    </aside>
+    <!-- END Sidebar -->
 
 
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="container">
-        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+    <!-- Main content -->
+    <article class="col-md-9 col-sm-9 main-content" role="main">
 
-        <div class="row">
-          <div class="col-md-6 col-sm-6">
-            <p>Copyright &copy; 2017. All right reserved</p>
-          </div>
-          <div class="col-md-6 col-sm-6">
-            <ul class="footer-menu">
-              <li><a href="#">Changelog</a></li>
-              <li><a href="#">Credits</a></li>
-              <li><a href="#" target="_blank">Contact us</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- END Footer -->
+      <header>
+        <h1>Interface</h1>
+        <p><strong>Interface</strong> is a html online documentation template which can help you rapidly develop your next interface documentation, code and test tools.</p>
+        <ol class="toc">
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#interfaces">Interfaces</a></li>
+        </ol>
+      </header>
 
-    <!-- Scripts -->
-    <script src="static/js/nextdocs.js"></script>
-    <script src="static/js/custom.js"></script>
+      <section>
+        <h2 id="intro">Introduction</h2>
+        <p>{{description}}</p>
+      </section>
 
-  </body>
-
-</html>
+      <section>
+        <h2 id="interfaces">Interfaces</h2>
+        <p>{{product}} implements the following interfaces.</p>
+        {% for interface in interfaces %}
+          <li><a href="mil.html">{{interface}}</a></li>
+        {% endfor %}
+      </section>
+    </article>
+    <!-- END Main content -->
+  </div>
+</main>
+{% endblock %}
