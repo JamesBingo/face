@@ -23,9 +23,28 @@
 
 
 <body>
-{% block body %}
-    <div>Ooops..</div>
-{% endblock %}
+
+<main class="container">
+  <div class="row">
+    <!-- Sidebar -->
+    <aside class="col-md-3 col-sm-3 sidebar">
+      <ul class="sidenav dropable sticky">
+      {% block sidebar %}
+        <li class="active">
+          <a href="home.html">Home</a>
+        </li>
+      {% endblock %}
+      </ul>
+    </aside>
+    <!-- END Sidebar -->
+    
+    <article class="col-md-9 col-sm-9 main-content" role="main">
+        {% block main %}
+        {% endblock %}
+    </article>
+
+  </div>
+</main>
 
 {% block footer %}
     <!-- Footer -->
@@ -39,9 +58,7 @@
           </div>
           <div class="col-md-6 col-sm-6">
             <ul class="footer-menu">
-              <li><a href="#">Changelog</a></li>
-              <li><a href="#">Credits</a></li>
-              <li><a href="#" target="_blank">Contact us</a></li>
+              <li><a href="/contact.html">Contact us</a></li>
             </ul>
           </div>
         </div>
@@ -56,8 +73,4 @@
     <script src="static/js/custom.js"></script>
 {% endblock %}
 </body>
-
-
-
-
 </html>

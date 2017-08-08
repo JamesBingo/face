@@ -1,70 +1,49 @@
 {% extends "base.html" %}
 
-{% block body %}
-<!-- Word Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="word-title"></h4>
-      </div>
-      <div class="modal-body"  id="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+{% block main %}
+
+   <!-- Word Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="word-title"></h4>
+        </div>
+        <div class="modal-body"  id="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<main class="container">
-  <div class="row">
+  <header>
+    <h1>{{name}}</h1>
+  </header>
 
-    <!-- Sidebar -->
-    <aside class="col-md-3 col-sm-3 sidebar">
-
-      <ul class="sidenav dropable sticky">
-        <li class="active">
-          <a href="home.html">Home</a>
-        </li>
-      </ul>
-
-    </aside>
-    <!-- END Sidebar -->
-
-
-    <!-- Words content -->
-    <article class="col-md-9 col-sm-9 main-content" role="main">
-
-      <header>
-        <h1>{{name}}</h1>
-      </header>
-
-      <section>
-        <h2 id="messages">{{name}}</h2>
-        <table id="messages" class="table table-hover">
-          <thead>
-            <tr>
-              <th>Word No.</th>
-              <th>Word Name</th>
-            </tr>
-          </thead>
-          <tbody>              
-            {% for word in words %}
-              <tr id="{{word.number}}" class="hover-row word">
-                <th scope="row">{{word.number}}</th>
-                <td>{{word.name}}</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </section>
-    </article>
-    <!-- END Main content -->
-  </div>
-</main>
-
+  <section>
+    <h2 id="messages">{{name}}</h2>
+    <table id="messages" class="table table-hover">
+      <thead>
+        <tr>
+          <th>Word No.</th>
+          <th>Word Name</th>
+        </tr>
+      </thead>
+      <tbody>              
+        {% for word in words %}
+          <tr id="{{word.number}}" class="hover-row word">
+            <th scope="row">{{word.number}}</th>
+            <td>{{word.name}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+<!-- main -->
+{% endblock %}
 
 {% block scripts %}
 
@@ -74,5 +53,3 @@
   <script> subaddress = "{{sa}}" </script>
 {% endblock %}
 
-<!-- body -->
-{% endblock %}

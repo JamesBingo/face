@@ -127,11 +127,21 @@ class WebConverter(WebDocumentConverter):
 		# Main page
 		fileName = 'home.html'
 		template = self.env.get_template(fileName)
-		result = template.render(company=self.config['company'],interfaces=self.interfaces)
+		result = template.render(company=self.config['company'],interfaces=self.interfaces, description=self.config['description'])
 		buildfile = os.path.join(directory,fileName)
 		f = open(buildfile, 'wb')
 		f.write(result)
 		f.close()
+
+		# Contact Us
+		fileName = 'contact.html'
+		template = self.env.get_template(fileName)
+		result = template.render(company=self.config['company'],address=self.config['address'])
+		buildfile = os.path.join(directory,fileName)
+		f = open(buildfile, 'wb')
+		f.write(result)
+		f.close()
+
 
 		# move any static files
 		staticLocation = os.path.join(directory,'static')

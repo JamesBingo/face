@@ -1,5 +1,13 @@
 {
 	"company": "Oli Ltd",
+	"address": {
+		"number": 10,
+		"road": "Example Street",
+		"town": "Example",
+		"county": "Exampleshire",
+		"postcode": "EX01 2AM",
+		"tel": "01903 503000"
+	},
 	"product": "airdata",
 	"description": "airdata calculates airdata der!", 
 	"MIL-STD-1553": {

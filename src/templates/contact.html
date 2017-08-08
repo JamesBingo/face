@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1>Contact Us</h1>
+<p> {{company}} </p>
+<p> {{address.number}} {{address.road}} </p>
+<p> {{address.town}} </p>
+<p> {{address.county}} </p>
+<p> {{address.postcode}} </p>
+<p> <strong>Tel:</strong> {{address.tel}} </p>
+
+{% endblock %}

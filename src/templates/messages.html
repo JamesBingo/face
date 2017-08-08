@@ -1,76 +1,53 @@
 {% extends "base.html" %}
 
+{% block main %}
+  <header>
+    <h1>MIL-STD-1553</h1>
+    <p>Something...</p>
+    <ol class="toc">
+      <li><a href="#mode-codes">Mode Codes</a></li>
+      <li><a href="#interface">Message Definition</a></li>
+    </ol>
+  </header>
 
-{% block body %}
-<main class="container">
-  <div class="row">
+  <section>
+    <h2 id="mode-codes">Mode Codes</h2>
+    <p>The following mode codes are implemented:</p>
+    <ul>
+      {% for modeCode in modeCodes.implemented %}
+      <li>{{modeCode}}</li>
+      {% endfor %}
+    </ul>
+    <p>The following mode codes are not implemented:</p>
+    <ul>
+      {% for modeCode in modeCodes.notimplemented %}
+      <li>{{modeCode}}</li>
+      {% endfor %}
+    </ul>
+  </section>
 
-    <!-- Sidebar -->
-    <aside class="col-md-3 col-sm-3 sidebar">
-
-      <ul class="sidenav dropable sticky">
-        <li class="active">
-          <a href="home.html">Home</a>
-        </li>
-      </ul>
-
-    </aside>
-    <!-- END Sidebar -->
-
-
-    <!-- Main content -->
-    <article class="col-md-9 col-sm-9 main-content" role="main">
-
-      <header>
-        <h1>MIL-STD-1553</h1>
-        <p>Something...</p>
-        <ol class="toc">
-          <li><a href="#mode-codes">Mode Codes</a></li>
-          <li><a href="#interface">Message Definition</a></li>
-        </ol>
-      </header>
-
-      <section>
-        <h2 id="mode-codes">Mode Codes</h2>
-        <p>The following mode codes are implemented:</p>
-        <ul>
-          {% for modeCode in modeCodes.implemented %}
-          <li>{{modeCode}}</li>
-          {% endfor %}
-        </ul>
-        <p>The following mode codes are not implemented:</p>
-        <ul>
-          {% for modeCode in modeCodes.notimplemented %}
-          <li>{{modeCode}}</li>
-          {% endfor %}
-        </ul>
-      </section>
-
-      <section>
-        <h2 id="interface">Interface Description</h2>
-        <table id=messages class="table table-hover">
-          <thead>
-            <tr>
-              <th>Subaddress</th>
-              <th>Name</th>
-              <th>Word Count</th>
-              <th>T/R</th>
-            </tr>
-          </thead>
-          <tbody>              
-            {% for message in messages %}
-              <tr onclick="a={{message.subaddress}};window.location=a.toString() + '.html';" class="hover-row">
-                <th scope="row">{{message.subaddress}}</th>
-                <td>{{message.name}}</td>
-                <td>{{message.wordcount}}</td>
-                <td>{{message.transmit}}</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </section>
-    </article>
-    <!-- END Main content -->
-  </div>
-</main>
+  <section>
+    <h2 id="interface">Interface Description</h2>
+    <table id=messages class="table table-hover">
+      <thead>
+        <tr>
+          <th>Subaddress</th>
+          <th>Name</th>
+          <th>Word Count</th>
+          <th>T/R</th>
+        </tr>
+      </thead>
+      <tbody>              
+        {% for message in messages %}
+          <tr onclick="a={{message.subaddress}};window.location=a.toString() + '.html';" class="hover-row">
+            <th scope="row">{{message.subaddress}}</th>
+            <td>{{message.name}}</td>
+            <td>{{message.wordcount}}</td>
+            <td>{{message.transmit}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+<!-- END Main content -->
 {% endblock %}
