@@ -10,7 +10,7 @@ class WebDocumentConverter(object):
 
 	"""
 
-	def __init__(self,app='ice',templates='src/templates'):
+	def __init__(self,app='ice',templates='src/templates/web'):
 		"""
 			`app` is the python package to use, defaults to `ice`. `templates is the directory where the jinja2 templates are stored, defaults to `templates`.
 		"""
