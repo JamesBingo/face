@@ -6,7 +6,14 @@ It currently takes a config file and outputs a static web page. The plan is to a
 
 # Install
 
-Installation using virtualenv (recommended):
+Grab the repo first:
+
+```
+git clone https://github.com/JamesBingo/Face.git face
+
+```
+
+Installation using virtualenv (recommended), change into the `face` directory:
 
 ```
 virtualenv ENV
@@ -31,7 +38,7 @@ pip install -r requirements.txt
 python converters.py
 ```
 
-Running the `converters` module directly will create a `/dist` directory that includes all the required files to serve a static web page. Run the command below in the `/dist` directory to serve the generated docs: 
+Running the `converters` module directly will create a `/dist` directory that includes all the required files to serve a static web page. Run the command below in the `/dist` directory to serve the generated docs @localhost:8000: 
 
 ```
 python -m SimpleHTTPServer
