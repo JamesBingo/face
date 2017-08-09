@@ -103,10 +103,10 @@ class WebConverter(WebDocumentConverter):
 		self.config = json.load(f)
 
 		# Get what interfaces we have
-		interfaces = ['MIL-STD-1553','ARINC-429','AFDX']
+		interfaces = [{"name":'MIL-STD-1553',"link":'mil.html'},{"name":'ARINC-429',"link":'arinc.html'},{"name":'AFDX',"link":'afdx.html'}]
 		self.interfaces = list()
 		for interface in interfaces:
-			if self.config.has_key(interface):
+			if self.config.has_key(interface['name']):
 				self.interfaces.append(interface)
 
 		self.milconverter = MilConverter(self.config)

@@ -2,16 +2,13 @@
 
 {% block sidebar %}
   <li class="active">
-    <a href="#">Overview</a>
-    <ul>
-      <li><a href="#intro">Introduction</a></li>
-    </ul>
+    <a href="#intro">Introduction</a>
   </li>
   <li>
     <a href="#interfaces">Interfaces</a>
     <ul>
       {% for interface in interfaces %}
-        <li><a href="#{{interface}}">{{interface}}</a></li>
+        <li><a href="{{interface.link}}">{{interface.name}}</a></li>
       {% endfor %}
     </ul>
   </li>
@@ -36,7 +33,7 @@
     <h2 id="interfaces">Interfaces</h2>
     <p>{{product}} implements the following interfaces.</p>
     {% for interface in interfaces %}
-      <li><a href="mil.html">{{interface}}</a></li>
+      <li><a href="{{interface.link}}">{{interface.name}}</a></li>
     {% endfor %}
   </section>
 {% endblock %}

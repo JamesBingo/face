@@ -1,12 +1,25 @@
 {% extends "base.html" %}
 
+{% block sidebar %}
+  <li class="active">
+    <a href="home.html">Home</a>
+  </li>
+  <li>
+    <a href="#mode-codes">Mode Codes</a>
+  </li>
+  <li>
+    <a href="#msgs">Messages</a>
+  </li>  
+{% endblock %}
+
+
 {% block main %}
   <header>
     <h1>MIL-STD-1553</h1>
     <p>Something...</p>
     <ol class="toc">
       <li><a href="#mode-codes">Mode Codes</a></li>
-      <li><a href="#interface">Message Definition</a></li>
+      <li><a href="#msgs">Messages</a></li>
     </ol>
   </header>
 
@@ -27,7 +40,7 @@
   </section>
 
   <section>
-    <h2 id="interface">Interface Description</h2>
+    <h2 id="msgs">Messages</h2>
     <table id=messages class="table table-hover">
       <thead>
         <tr>
