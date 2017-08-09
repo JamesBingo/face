@@ -43,6 +43,8 @@ Currently only `.json` format is supported. The plan is to add `.yaml` aswell.
 
 The repo comes with an example config file `example.json` that the `converters.py` script uses as default.
 
+The format of the json file is defined in `spec.txt` (needs updating!)
+
 
 # Utlities
 
