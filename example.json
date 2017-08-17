@@ -112,5 +112,25 @@
 				"Transmitter Bus Shutdown"
 			]
 		} 
+	},
+	"ARINC-429": {
+		"messages": [{
+			"number": 271,
+			"name": "Static Pressure",
+			"transmit": true,
+			"lsb": 0.1,
+			"length": 19,
+			"padding": 0,
+			"units": "mbar"
+		},
+		{
+			"number": 272,
+			"name": "Total Pressure",
+			"transmit": false,
+			"lsb": 0.1,
+			"length": 16,
+			"padding": 0,
+			"units": "mbar"
+		}]
 	}
 }

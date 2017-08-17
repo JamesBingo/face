@@ -44,7 +44,7 @@ class MilConverter(WebDocumentConverter):
 		"""
 
 		# Create messages page (shows all messages)
-		template = self.env.get_template('messages.html')
+		template = self.env.get_template('mil1553/messages.html')
 		result = template.render(company=self.config['company'], messages=self.config['MIL-STD-1553']['messages'],modeCodes=self.config['MIL-STD-1553']['mode codes'])
 		
 
@@ -56,7 +56,7 @@ class MilConverter(WebDocumentConverter):
 
 
 		# Create message pages (shows each word for a message)
-		template = self.env.get_template('message.html')
+		template = self.env.get_template('mil1553/message.html')
 		messages = self.config['MIL-STD-1553']['messages']
 		for message in messages:
 			result = template.render(company=self.config['company'], words=message['words'],name=message['name'], sa=message['subaddress'],wordsjson=json.dumps(message['words']))
@@ -87,7 +87,24 @@ class ArincConverter(WebDocumentConverter):
 
 
 	def convert(self, directory='dist', static='static'):
-		NotImplemented
+
+		messages = self.config['ARINC-429']['messages']
+
+		# Create messages page (shows all messages)
+		template = self.env.get_template('arinc429/message.html')
+		result = template.render(company=self.config['company'], messages=messages)
+
+		buildfile = os.path.join(directory,'arinc.html')
+		f = open(buildfile, 'wb')
+		f.write(result)
+		f.close()
+
+		# Provide data for each word
+		staticLocation = os.path.join(directory,'static')
+		dataFile = os.path.join(staticLocation,'labels.json')
+		f = open(dataFile,'wb')
+		json.dump(messages,f)
+		f.close()		
 
 class WebConverter(WebDocumentConverter):
 	""" Converts and interface config into a web document """
@@ -110,6 +127,7 @@ class WebConverter(WebDocumentConverter):
 				self.interfaces.append(interface)
 
 		self.milconverter = MilConverter(self.config)
+		self.arincconverter = ArincConverter(self.config)
 
 	def convert(self, directory='dist', static='static'):
 		"""
@@ -151,7 +169,8 @@ class WebConverter(WebDocumentConverter):
 
 
 		# Convert each interface
-		self.milconverter.convert()
+		self.milconverter.convert(directory,static)
+		self.arincconverter.convert(directory,static)
 
 
 class OFPConverter(object):

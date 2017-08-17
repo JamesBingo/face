@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+   <!-- Word Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="word-title"></h4>
+        </div>
+        <div class="modal-body"  id="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <h1>ARINC-429</h1>
+    <p>Something...</p>
+    <ol class="toc">
+      <li><a href="#msgs">Messages</a></li>
+    </ol>
+  </header>
+
+  <section>
+    <h2 id="msgs">Messages</h2>
+    <table id="messages" class="table table-hover">
+      <thead>
+        <tr>
+          <th>Label</th>
+          <th>Name</th>
+          <th>T/R</th>
+        </tr>
+      </thead>
+      <tbody>              
+        {% for message in messages %}
+          <tr id="{{message.number}}" class="hover-row arinc-label">
+            <th scope="row">{{message.number}}</th>
+            <td>{{message.name}}</td>
+            <td>{{message.transmit}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+<!-- main -->
+{% endblock %}
+
+{% block scripts %}
+
+  {{ super() }}
+  <!-- Vendor Scripts -->
+  <script src="static/js/vendor/ejs.min.js"></script>
+{% endblock %}
+

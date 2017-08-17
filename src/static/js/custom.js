@@ -29,7 +29,6 @@ modal = `<section>
           <% } %>
         </section>`
 
-
 $(".hover-row").hover(
   function() {
     document.body.style.cursor = "pointer";
@@ -55,8 +54,6 @@ $('.word').click(
           return element.number==this.number
         },word)
 
-        console.log(word)
-
         // Set the modal data
         $('#word-title').html(message.name)
         $('#modal-body').html(ejs.render(modal,{word:word}))
@@ -68,3 +65,24 @@ $('.word').click(
     ,'json')
   
   })
+
+$('.arinc-label').click( function (event) {
+
+  $.get('/static/labels.json',
+    function(data) {
+
+      console.log(data)
+
+      let label = data.find(function(element){
+        return element.number == this.id
+      },event.currentTarget)
+
+      console.log(label)
+
+      $('#label-title').html(label.name)
+      $('#modal-body').html(ejs.render(modal,{word:label}))
+      $('#myModal').modal()
+
+  },'json')
+
+})
