@@ -60,3 +60,9 @@ The repo contains a `watch-converter` script, this will observe all files in the
 ```
 python watch-converter.py
 ```
+
+You can also specify a path to watch:
+
+```
+python watch-converter.py --path src/templates/code
+```
