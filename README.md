@@ -55,8 +55,14 @@ The format of the json file is defined in `spec.txt` (needs updating!)
 
 # Utlities
 
-The repo contains a `watch-converter` script, this will observe all files in the `/src` directoy and re-build when any files change. 
+The repo contains a `watch-converter` script that will observe all files in the `/src` directoy (if no arguments are provided) and re-build when any files in the directory change. 
 
 ```
 python watch-converter.py
+```
+
+You can also specify a custom path to watch:
+
+```
+python watch-converter.py --path src/templates/code
 ```
