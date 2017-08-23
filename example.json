@@ -111,7 +111,47 @@
 				"Reset Remote Terminal",
 				"Transmitter Bus Shutdown"
 			]
-		} 
+		},
+		"connectors": [
+			{
+				"name": "J1",
+				"description": "The main connector",
+				"pinout": [{
+					"name": "28V",
+					"type": "24 AWG"
+				},{
+					"name": "28V RTN",
+					"type": "24 AWG"
+				},{
+					"name": "RS442 High",
+					"type": "Twisted Pair"
+				}, {
+					"name": "RS442 Low",
+					"type": "Twisted Pair"					
+				}, {
+					"name": "Remote Terminal 1",
+					"type": "24 AWG"					
+				}, {
+					"name": "Remote Terminal 2",
+					"type": "24 AWG"					
+				}, {
+					"name": "Remote Terminal 3",
+					"type": "24 AWG"					
+				}, {
+					"name": "Remote Terminal 4",
+					"type": "24 AWG"					
+				}, {
+					"name": "Remote Terminal 5",
+					"type": "24 AWG"					
+				}, {
+					"name": "Remote Terminal Parity",
+					"type": "24 AWG"					
+				}, {
+					"name": "0V Reference",
+					"type": "24 AWG"					
+				}]
+			}
+		]
 	},
 	"ARINC-429": {
 		"messages": [{

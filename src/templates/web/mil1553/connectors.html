@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main %}
+	<h1>Connectors</h1>
+	{% for connector in connectors %}
+		<h2>{{connector.name}}</h2>
+		<p>{{connector.description}}</p>
+
+		<table id=connectors class="table table-hover">
+	      <thead>
+	        <tr>
+	          <th>Pin no.</th>
+	          <th>Name</th>
+	          <th>Wire Type</th>
+	        </tr>
+	      </thead>
+	      <tbody> 
+			{% for pin in connector.pinout %}
+			    <tr class="hover-row">
+	            <th scope="row">{{loop.index}}</th>
+	            <td>{{pin.name}}</td>
+	            <td>{{pin.type}}</td>
+	          </tr>
+	        {% endfor %}
+	      </tbody>
+	     </table>
+	{% endfor %}
+{% endblock %}

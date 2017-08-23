@@ -66,6 +66,14 @@ class MilConverter(WebDocumentConverter):
 			f.write(result)
 			f.close()
 
+		# Create connector page
+		template = self.env.get_template('mil1553/connectors.html')
+		result = template.render(connectors=self.config['MIL-STD-1553']['connectors'])
+		buildfile = os.path.join(directory,'connectors.html')
+		f = open(buildfile, 'wb')
+		f.write(result)
+		f.close()	
+
 		# Provide data for each word
 		staticLocation = os.path.join(directory,'static')
 		dataFile = os.path.join(staticLocation,'messages.json')
