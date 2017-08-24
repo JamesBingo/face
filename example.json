@@ -150,6 +150,34 @@
 					"name": "0V Reference",
 					"type": "24 AWG"					
 				}]
+			},
+			{
+				"name": "J2",
+				"description": "MIL-STD-1553 Bus A",
+				"pinout": [{
+					"name":"Centre",
+					"type":"Center Pin"
+				}, {
+					"name":"Outer",
+					"type":"Outer Pin"
+				}, {
+					"name":"Sleeve",
+					"type":"Sleeve"
+				}]
+			},
+			{
+				"name": "J3",
+				"description": "MIL-STD-1553 Bus B",
+				"pinout": [{
+					"name":"Centre",
+					"type":"Center Pin"
+				}, {
+					"name":"Outer",
+					"type":"Outer Pin"
+				}, {
+					"name":"Sleeve",
+					"type":"Sleeve"
+				}]
 			}
 		]
 	},
