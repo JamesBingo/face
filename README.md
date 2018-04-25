@@ -2,10 +2,10 @@
 
 The goal of **face** is to help you rapidly develop your next interface documentation, code and test tools.
 
-Avinoics equipment typically consists of developing requirements, code and verification tools. This tool aims to simplfy the entire process by
-enabling the user to state the entire interface of the equipement in one place - a simple json/yaml config file. **face** will analyse its content
+Avionics equipment typically consists of developing requirements, code and verification tools. **face** aims to simplfy the entire process by
+enabling the user to state there equipment interface in one place - a simple json/yaml config file. **face** will analyse its contents
 and automatically create documentiton, code and test tools. An update to the interface (config file) will cause an update to all outputs therefore
-solving the problem of keeping docs, code, test cases in sync. 
+solving the problem of keeping docs, code and test cases in sync. 
 
 It currently takes a config file and outputs a static web page. The plan is to add code and test tools and different format of documents.
 
@@ -18,7 +18,7 @@ git clone https://github.com/JamesBingo/face.git face
 
 ```
 
-Installation using virtualenv (recommended), change into the `face` directory:
+Installation using virtualenv (recommended), change into the `face` directory, only supports `Python2`:
 
 ```
 virtualenv ENV

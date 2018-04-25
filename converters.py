@@ -126,7 +126,7 @@ class ArincConverter(WebDocumentConverter):
 		template = self.env.get_template('arinc429/message.html')
 		result = template.render(company=self.config['company'], messages=messages)
 
-		pages = [{"data":result,"name":'arinc.htrml'}]
+		pages = [{"data":result,"name":'arinc.html'}]
 		self.write(pages)
 
 		# Provide data for each word
