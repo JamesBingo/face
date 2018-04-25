@@ -43,7 +43,7 @@ pip install -r requirements.txt
 python converters.py
 ```
 
-Running the `converters` module directly will create a `/dist` directory that includes all the required files to serve a static web page. Run the command below in the `/dist` directory to serve the generated docs @ <localhost:8000/home.html>: 
+Running the `converters` module directly will create a `/dist` directory that includes all the required files to serve a static web page. Run the command below in the `/dist` directory to serve the generated docs @ http://localhost:8000/home.html: 
 
 ```
 python -m SimpleHTTPServer
