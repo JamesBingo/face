@@ -1,6 +1,11 @@
 # Intro
 
-The goal of **Face** is to help you rapidly develop your next interface documentation, code and test tools.
+The goal of **face** is to help you rapidly develop your next interface documentation, code and test tools.
+
+Avinoics equipment typically consists of developing requirements, code and verification tools. This tool aims to simplfy the entire process by
+enabling the user to state the entire interface of the equipement in one place - a simple json/yaml config file. **face** will analyse its content
+and automatically create documentiton, code and test tools. An update to the interface (config file) will cause an update to all outputs therefore
+solving the problem of keeping docs, code, test cases in sync. 
 
 It currently takes a config file and outputs a static web page. The plan is to add code and test tools and different format of documents.
 
@@ -9,7 +14,7 @@ It currently takes a config file and outputs a static web page. The plan is to a
 Grab the repo first:
 
 ```
-git clone https://github.com/JamesBingo/Face.git face
+git clone https://github.com/JamesBingo/face.git face
 
 ```
 
@@ -49,9 +54,6 @@ python -m SimpleHTTPServer
 Currently only `.json` format is supported. The plan is to add `.yaml` aswell. 
 
 The repo comes with an example config file `example.json` that the `converters.py` script uses as default.
-
-The format of the json file is defined in `spec.txt` (needs updating!)
-
 
 # Utlities
 

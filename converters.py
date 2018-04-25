@@ -6,8 +6,9 @@ import jinja2
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 class WebDocumentConverter(object):
-	""" This is a base converter class that sets-up the correct enviroment. This class is not to be used directly but inherited by the converters.
-
+	""" 
+		This is a base converter class that sets-up the correct enviroment. 
+		This class is not to be used directly but inherited by the converters.
 	"""
 
 	def __init__(self,templates='src/templates/web'):
@@ -23,8 +24,9 @@ class WebDocumentConverter(object):
 		
 	def write(self,pages):
 		"""
-			Writes all web pages to file
-			`pages` is a list of page dicts. A `page` dict has a `data` key which is the string result returned from `template.render` and `name` key which is the filename to write to
+			Writes all web pages to file. `pages` is a list of page dicts. 
+			A `page` dict has a `data` key which is the string result returned from `template.render` 
+			and `name` key which is the filename to write to
 		"""
 
 		# Write web pages
@@ -52,9 +54,9 @@ class MilConverter(WebDocumentConverter):
 
 	def convert(self, static='static'):
 		"""
-			Converts an interface config into the file specfied by `format` using the theme `theme`. `theme` defaults to the ice theme.
-
-			`static` is the name of the directory to copy any static files to the build, defaults to `static`
+			Converts an interface config into a MIL-STD-1553 webpage.
+			`static` is the name of the directory to copy any static 
+			files to the build, defaults to `static`
 		"""
 
 		# Pages
@@ -62,7 +64,9 @@ class MilConverter(WebDocumentConverter):
 
 		# Create messages page (shows all messages)
 		template = self.env.get_template('mil1553/messages.html')
-		result = template.render(company=self.config['company'], messages=self.config['MIL-STD-1553']['messages'],modeCodes=self.config['MIL-STD-1553']['mode codes'])
+		result = template.render(company=self.config['company'], 
+			messages=self.config['MIL-STD-1553']['messages'],
+			modeCodes=self.config['MIL-STD-1553']['mode codes'])
 		
 		pages.append({"data":result,"name":'mil.html'})
 
@@ -71,7 +75,12 @@ class MilConverter(WebDocumentConverter):
 		template = self.env.get_template('mil1553/message.html')
 		messages = self.config['MIL-STD-1553']['messages']
 		for message in messages:
-			result = template.render(company=self.config['company'], words=message['words'],name=message['name'], sa=message['subaddress'],wordsjson=json.dumps(message['words']))
+			result = template.render(company=self.config['company'], 
+				words=message['words'],
+				name=message['name'], 
+				sa=message['subaddress'],
+				wordsjson=json.dumps(message['words']))
+
 			fileName = str(message['subaddress']) + '.html' 
 			pages.append({"data":result,"name":fileName})
 
@@ -105,6 +114,11 @@ class ArincConverter(WebDocumentConverter):
 
 
 	def convert(self, static='static'):
+		"""
+			Converts an interface config into a ARINC-429 webpage.
+			`static` is the name of the directory to copy any static 
+			files to the build, defaults to `static`
+		"""
 
 		messages = self.config['ARINC-429']['messages']
 
@@ -118,28 +132,31 @@ class ArincConverter(WebDocumentConverter):
 		# Provide data for each word
 		staticLocation = os.path.join(self.directory,'static')
 		dataFile = os.path.join(staticLocation,'labels.json')
-		f = open(dataFile,'wb')
-		json.dump(messages,f)
-		f.close()		
+
+		with open(dataFile,'wb') as f:
+			json.dump(messages,f)		
 
 class WebConverter(WebDocumentConverter):
-	""" Converts and interface config into a web document """
+	""" Converts an interface config into a web document """
 
 	def __init__(self, config, directory='dist'):
 		""" `config` file is the name of the interface config """
+
+		# known interfaces
+		INTERFACES = [{"name":'MIL-STD-1553',"link":'mil.html'},
+			{"name":'ARINC-429',"link":'arinc.html'},
+			{"name":'AFDX',"link":'afdx.html'}]
 
 		# Set-up the enviroment
 		super(WebConverter,self).__init__()
 		self.directory = directory
 
 		# Decode the config file
-		f = open(config, 'r')
-		self.config = json.load(f)
+		with open(config, 'r') as f:
+			self.config = json.load(f)
 
-		# Get what interfaces we have
-		interfaces = [{"name":'MIL-STD-1553',"link":'mil.html'},{"name":'ARINC-429',"link":'arinc.html'},{"name":'AFDX',"link":'afdx.html'}]
 		self.interfaces = list()
-		for interface in interfaces:
+		for interface in INTERFACES:
 			if self.config.has_key(interface['name']):
 				self.interfaces.append(interface)
 
@@ -164,7 +181,9 @@ class WebConverter(WebDocumentConverter):
 		# Main page
 		fileName = 'home.html'
 		template = self.env.get_template(fileName)
-		result = template.render(company=self.config['company'],interfaces=self.interfaces, description=self.config['description'])
+		result = template.render(company=self.config['company'],
+			interfaces=self.interfaces, 
+			description=self.config['description'])
 		pages.append({"data":result,"name":fileName})
 
 
@@ -175,8 +194,8 @@ class WebConverter(WebDocumentConverter):
 		pages.append({"data":result,"name":fileName})
 
 
+		# You can guess what this does
 		self.write(pages)
-
 
 		# move any static files
 		staticLocation = os.path.join(self.directory,'static')
@@ -185,7 +204,7 @@ class WebConverter(WebDocumentConverter):
 		shutil.copytree(os.path.join('src',static),staticLocation)
 
 
-		# Convert each interface
+		# Call the specific converters for each type
 		self.milconverter.convert(static)
 		self.arincconverter.convert(static)
 

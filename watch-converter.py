@@ -8,24 +8,27 @@ from subprocess import CalledProcessError
 
 import argparse
 
+""" 
+    Utility script to watch for changes
 
-class MyHandler(FileSystemEventHandler):
+"""
+
+
+class Handler(FileSystemEventHandler):
     def on_modified(self, event):
         try:
             subprocess.check_call(['python','converters.py'])
         except CalledProcessError:
-            # Carry on - error will be propogated 
             print "\nWatching for changes..."
         else:
             print "Files created in dist at: " + datetime.datetime.now().isoformat()
-
 
 parser = argparse.ArgumentParser(description="Watch stuff")
 parser.add_argument('--path',default='src',dest='path',help="The path to watch")
 args = parser.parse_args()
 
 
-event_handler = MyHandler()
+event_handler = Handler()
 observer = Observer()
 observer.schedule(event_handler, path=args.path, recursive=True)
 observer.start()
