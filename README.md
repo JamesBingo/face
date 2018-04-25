@@ -7,7 +7,7 @@ enabling the user to state there equipment interface in one place - a simple jso
 and automatically create documentiton, code and test tools. An update to the interface (config file) will cause an update to all outputs therefore
 solving the problem of keeping docs, code and test cases in sync. 
 
-It currently takes a config file and outputs a static web page. The plan is to add code and test tools and different format of documents.
+It currently takes a config file and outputs a static web page. The plan is to add code and test tools.
 
 # Install
 
@@ -43,7 +43,7 @@ pip install -r requirements.txt
 python converters.py
 ```
 
-Running the `converters` module directly will create a `/dist` directory that includes all the required files to serve a static web page. Run the command below in the `/dist` directory to serve the generated docs @localhost:8000: 
+Running the `converters` module directly will create a `/dist` directory that includes all the required files to serve a static web page. Run the command below in the `/dist` directory to serve the generated docs @ <localhost:8000/home.html>: 
 
 ```
 python -m SimpleHTTPServer

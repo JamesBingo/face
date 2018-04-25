@@ -13,7 +13,8 @@ class WebDocumentConverter(object):
 
 	def __init__(self,templates='src/templates/web'):
 		"""
-			`templates is the directory where the jinja2 templates are stored, defaults to `templates`.
+			`templates is the directory where the jinja2 templates are stored. 
+			defaults to `templates`.
 		"""
 
 		self.env = Environment(
@@ -32,9 +33,8 @@ class WebDocumentConverter(object):
 		# Write web pages
 		for page in pages:	
 			buildfile = os.path.join(self.directory,page['name'])
-			f = open(buildfile, 'wb')
-			f.write(page['data'])
-			f.close()
+			with open(buildfile, 'wb') as f: 
+				f.write(page['data'])
 
 class MilConverter(WebDocumentConverter):
 	""" Converts interface configs into documents of your choice. """
@@ -90,14 +90,13 @@ class MilConverter(WebDocumentConverter):
 		pages.append({"data":result,"name":'connectors.html'})
 
 
-		#
 		self.write(pages)
 
 		# Provide data for each word
 		staticLocation = os.path.join(self.directory,'static')
 		dataFile = os.path.join(staticLocation,'messages.json')
-		f = open(dataFile,'wb')
-		json.dump(messages,f)
+		with open(dataFile,'wb') as f:
+			json.dump(messages,f)
 
 class ArincConverter(WebDocumentConverter):
 	""" Converts arinc-429 section of interface config into static web pages. """
@@ -167,7 +166,8 @@ class WebConverter(WebDocumentConverter):
 		"""
 			Converts an interface config into a static web page.
 
-			`static` is the name of the directory to copy any static files to the build, defaults to `static`
+			`static` is the name of the directory to copy any static files to the build. 
+			defaults to `static`
 
 		"""
 
@@ -209,31 +209,39 @@ class WebConverter(WebDocumentConverter):
 		self.arincconverter.convert(static)
 
 class OFPConverter(object):
-	""" Converts interface configs into code of your choice. Available conversions are: """
+	""" 
+		Converts interface configs into code of your choice. 
+	"""
 
 	def __init__(config, **args):
 		"""
-			`config` is an interface config file. Available optional arguments are:
+			`config` is an interface config file. 
+			Available optional arguments are:
 				- outfile
 		"""
 
 	def convert(language='c'):
 		"""
-			Converts an interface config into the programming language `language`. Default is `c`.
+			Converts an interface config into the programming language `language`. 
+			Default is `c`.
 		"""
 
 class TestToolConverter(object):
-	""" Converts interface configs into a test tool configuration of your choice. Available configurations are: """	
+	""" 
+		Converts interface configs into a test tool configuration of your choice. 
+	"""	
 
 	def __init__(config, **args):
 		"""
-			`config` is an interface config file. Available optional arguments are:
+			`config` is an interface config file.
+			 Available optional arguments are:
 				- outfile
 		"""
 
 	def convert(tool='copilot'):
 		"""
-			Converts an interface config into a test tool definition specified by `tool`. Default is `c`.
+			Converts an interface config into a test tool definition specified by `tool`. 
+			Default is `copilot`.
 		"""
 
 
